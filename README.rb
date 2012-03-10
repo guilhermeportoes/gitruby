@@ -8,6 +8,7 @@ user.repos     # list of Repo objects
 user.gists     # list of Gist objects
 user.assigned_issues
 user.issues_create
+user.repos.watched # list of watched Repos objects
 
 ##### USER ACTIONS #####
 user = User.find('bernardofire')
