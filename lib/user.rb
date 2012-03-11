@@ -12,7 +12,7 @@ class User
                 :hireable, :id
 
   def initialize(params)
-    if params.kind_of? String or params.kind_of? Symbol
+    if params.is_a? String or params.is_a? Symbol
       hash = HTTParty.get "#{BASE_URL}users/#{params}"
       hash.each { |attr, value| __send__("#{attr}=", value)}
     else
