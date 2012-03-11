@@ -4,4 +4,5 @@ $LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'simplecov'
 SimpleCov.start
 
+require "user"
 require 'rspec'

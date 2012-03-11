@@ -19,4 +19,8 @@ class User
       params.each { |attr, value| __send__("#{attr}=", value)}
     end
   end
+
+  def self.find(username)
+    new(HTTParty.get "#{BASE_URL}users/#{username}")
+  end
 end
