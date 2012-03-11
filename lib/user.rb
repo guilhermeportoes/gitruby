@@ -1,17 +1,22 @@
 require 'httparty'
-require 'mash'
 
 
-class User < Mash
+class User
 
   BASE_URL = 'https://api.github.com/'
 
-  def initialize(params=nil)
+  # TODO: generate attr_accessor dinamically
+  attr_accessor :type, :following, :followers, :html_url, :bio, :avatar_url,
+                :login, :public_gists, :created_at, :location, :blog,
+                :name, :company, :email, :url, :gravatar_id, :public_repos,
+                :hireable, :id
+
+  def initialize(params)
     if params.kind_of? String or params.kind_of? Symbol
       hash = HTTParty.get "#{BASE_URL}users/#{params}"
-      super hash
+      hash.each { |attr, value| __send__("#{attr}=", value)}
     else
-      super params
+      params.each { |attr, value| __send__("#{attr}=", value)}
     end
   end
 end
