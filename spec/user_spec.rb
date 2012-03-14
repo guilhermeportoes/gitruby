@@ -20,7 +20,7 @@ describe User do
       {
         "type" => "User",
         "following" => 0,
-        "hireable" => false,
+        "hireable?" => false,
         "public_repos" => 3,
         "followers" => 131,
         "html_url" => "https://github.com/octocat",

@@ -8,7 +8,14 @@ class User
       params = HTTParty.get "#{BASE_URL}users/#{params}"
     end
     params.each do |attr, value|
-      self.class.send(:attr_accessor, attr)
+      if !!value == value
+        self.class.send(:attr_writer, attr)
+        self.class.send(:define_method, "#{attr}?") do
+          instance_variable_get("@#{attr}")
+        end
+      else
+        self.class.send(:attr_accessor, attr)
+      end
       send("#{attr}=", value)
     end
   end
