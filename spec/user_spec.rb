@@ -21,7 +21,7 @@ describe User do
         "type" => "User",
         "following" => 0,
         "hireable" => false,
-        "public_repos" => 4,
+        "public_repos" => 3,
         "followers" => 131,
         "html_url" => "https://github.com/octocat",
         "bio" => nil,
@@ -41,3 +41,4 @@ describe User do
     end
   end
 end
+
