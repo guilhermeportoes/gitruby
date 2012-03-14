@@ -39,6 +39,13 @@ describe User do
         "gravatar_id" =>"7ad39074b0584bc555d0417ae3e7d974"
       }
     end
+
+    it 'should not respond to github attributes when there are no results' do
+      user = User.new('')
+      user.should_not respond_to :login
+      user.should_not respond_to :following
+      user.should_not respond_to :followers
+    end
   end
 end
 

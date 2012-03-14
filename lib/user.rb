@@ -9,12 +9,12 @@ class User
     end
     params.each do |attr, value|
       if !!value == value
-        self.class.send(:attr_writer, attr)
-        self.class.send(:define_method, "#{attr}?") do
+        self.singleton_class.send(:attr_writer, attr)
+        self.singleton_class.send(:define_method, "#{attr}?") do
           instance_variable_get("@#{attr}")
         end
       else
-        self.class.send(:attr_accessor, attr)
+        self.singleton_class.send(:attr_accessor, attr)
       end
       send("#{attr}=", value)
     end
