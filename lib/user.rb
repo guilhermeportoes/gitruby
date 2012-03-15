@@ -29,9 +29,9 @@ class User
   def repos
     if not @repos
       params = HTTParty.get "#{BASE_URL}users/#{@login}/repos"
-      @repos = {}
+      @repos = []
       params.each do |repo|
-        @repos[repo['name']] = Repo.new(repo)
+        @repos << Repo.new(repo)
       end
     end
     return @repos

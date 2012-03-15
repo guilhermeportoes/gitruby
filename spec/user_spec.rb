@@ -22,7 +22,7 @@ describe User do
         "following" => 0,
         "hireable?" => false,
         "public_repos" => 3,
-        "followers" => 131,
+        "followers" => 132,
         "html_url" => "https://github.com/octocat",
         "bio" => nil,
         "avatar_url" => "https://secure.gravatar.com/avatar/7ad39074b0584bc555d0417ae3e7d974?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png",
