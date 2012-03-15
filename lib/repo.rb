@@ -1,5 +1,4 @@
 # encoding: utf-8
-
 require 'httparty'
 
 class Repo
@@ -7,7 +6,7 @@ class Repo
 
   def initialize(params, username=nil)
     if username and params.is_a? String or params.is_a? Symbol
-      params = HTTParty.get "#{BASE_URL}repos/#{username}/#{}"
+      params = HTTParty.get "#{BASE_URL}repos/#{username}/#{params}"
     end
     params.each do |attr, value|
       if !!value == value
@@ -22,7 +21,7 @@ class Repo
     end
   end
 
-  def self.find(username, repository)
+  def self.find(repository, username)
     new(HTTParty.get "#{BASE_URL}repos/#{username}/#{repository}")
   end
 end

@@ -4,13 +4,13 @@ require "spec_helper"
 describe Repo do
   context "without authentication" do
     it "should be findable by the github username/repository" do
-      repo = Repo.find('guilhermeportoes', 'janelas')
+      repo = Repo.find('janelas', 'guilhermeportoes')
       repo.name.should == 'janelas'
       repo.html_url.should == 'https://github.com/guilhermeportoes/janelas'
     end
 
     it "should convert the hash from api.github to public attributes" do
-      repo = Repo.find('guilhermeportoes', 'janelas')
+      repo = Repo.find('janelas', 'guilhermeportoes')
       get_janelas_repo.each do |key, value|
         repo.public_send(key).should == value
       end
