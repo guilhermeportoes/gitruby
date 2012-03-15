@@ -1,11 +1,13 @@
+# encoding: utf-8
+
 require 'httparty'
 
-class User
+class Repo
   BASE_URL = 'https://api.github.com/'
 
-  def initialize(params)
-    if params.is_a? String or params.is_a? Symbol
-      params = HTTParty.get "#{BASE_URL}users/#{params}"
+  def initialize(params, username=nil)
+    if username and params.is_a? String or params.is_a? Symbol
+      params = HTTParty.get "#{BASE_URL}repos/#{username}/#{}"
     end
     params.each do |attr, value|
       if !!value == value
@@ -20,7 +22,7 @@ class User
     end
   end
 
-  def self.find(username)
-    new(HTTParty.get "#{BASE_URL}users/#{username}")
+  def self.find(username, repository)
+    new(HTTParty.get "#{BASE_URL}repos/#{username}/#{repository}")
   end
 end
